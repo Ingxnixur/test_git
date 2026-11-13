@@ -102,10 +102,15 @@ def par_election(df, mesure, annee):
     ax.set_xlim(-6.2, -0.8)
     etiqueter(ax, fins, COULEURS, ecart_min=ax.get_ylim()[1] / 45)
     instituts = d["institut"].nunique()
-    libelle = d["libelle_mesure"].dropna().iloc[0] if d["libelle_mesure"].notna().any() else ""
+    if instituts <= 3:
+        # Peu d'instituts : on précise la question posée par chacun.
+        couples = d[["institut", "libelle_mesure"]].drop_duplicates()
+        detail = " ; ".join(f"{i} : {l.split(' (')[0]}" for i, l in couples.itertuples(index=False))
+    else:
+        detail = f"{instituts} instituts"
     ax.set_title(f"{titre} — présidentielle {annee}\n"
-                 f"Moyenne mensuelle, {len(d)} valeurs, {instituts} institut(s). "
-                 f"Mesure : {libelle}.", loc="left", fontsize=11)
+                 f"Moyenne mensuelle de {len(d)} valeurs ({detail}).",
+                 loc="left", fontsize=11)
     fig.subplots_adjust(right=0.82)
     chemin = SORTIE / f"{mesure}_{annee}_par_election.png"
     fig.savefig(chemin, dpi=150)

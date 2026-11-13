@@ -37,7 +37,14 @@ La table `cote_popularite` stocke chaque mesure publiée :
 
 Les intentions de vote viennent de la page Wikipédia « Liste de sondages sur l'élection présidentielle française de 2022 ». Chaque valeur renvoie à la notice déposée par l'institut auprès de la Commission des sondages.
 
-Les cotes de popularité viennent des baromètres mensuels des instituts. Le fichier `data/popularite_2022.csv` indique la source de chaque valeur.
+Les cotes de popularité viennent du « Tableau de bord des personnalités » publié chaque mois par Ifop-Fiducial pour Paris Match et Sud Radio. La question mesure la part de « bonne opinion ». Le fichier `data/popularite_2022.csv` donne le lien vers le document source de chaque valeur.
+
+Ce baromètre a des limites :
+
+- Ifop ne teste Éric Zemmour qu'à partir de décembre 2021.
+- Ifop ne teste jamais Philippe Poutou. Ses valeurs viennent de l'Observatoire politique d'Elabe pour Les Echos et Radio Classique (« image positive »), de janvier à mars 2022. Les deux questions diffèrent : comparez ces valeurs avec prudence.
+- Aucun baromètre consulté ne teste Nathalie Arthaud ni Jean Lassalle.
+- Le terrain de chaque vague Ifop a lieu au début du mois. Les cinq dernières semaines avant le premier tour ne sont donc pas couvertes.
 
 ## Règles de calcul
 
